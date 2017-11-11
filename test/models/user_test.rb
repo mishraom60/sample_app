@@ -5,10 +5,8 @@ class UserTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-    @user = User.new(name: "Example User", email: "user@example.com")
+    @user = User.new(name: "Example User", email: "user@example.com"
    password: "foobar", password_confirmation: "foobar")
-  
-  
   end
   test "email addresses should be unique" do
     duplicate_user = @user.dup
@@ -29,4 +27,4 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
-end
+

@@ -13,7 +13,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def create
     @user = User.new(user_params)
     if @user.save
-            flash[:success] = "Welcome to the Sample App!"
+            
+            UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
 
       redirect_to @user
     else
